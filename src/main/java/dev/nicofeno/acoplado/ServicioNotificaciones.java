@@ -8,7 +8,7 @@ import dev.nicofeno.infra.ClienteSmsGateway;
 import dev.nicofeno.infra.ClienteSmtp;
 import dev.nicofeno.infra.SmtpConfig;
 
-public class ServicioNotificacionesAcoplado {
+public class ServicioNotificaciones {
     public void enviarNotificacion(
             CanalNotificacion canal,
             String destinatario,
@@ -31,18 +31,18 @@ public class ServicioNotificacionesAcoplado {
                 );
                 new NotificacionEmail(destinatario, mensaje, smtp).enviar();
             }
-//            case SMS -> {
-//                var smsGateway = new ClienteSmsGateway(
-//                        new ApiCredentials("SMS_API_KEY_123")
-//                );
-//                new NotificacionSms(destinatario, mensaje, smsGateway).enviar();
-//            }
-//            case WHATSAPP -> new NotificacionWhatsApp(
-//                    destinatario,
-//                    mensaje,
-//                    "WHATSAPP_API_KEY_123",
-//                    "https://api.whatsapp.com"
-//            ).enviar();
+            case SMS -> {
+                var smsGateway = new ClienteSmsGateway(
+                        new ApiCredentials("SMS_API_KEY_123")
+                );
+                new NotificacionSms(destinatario, mensaje, smsGateway).enviar();
+            }
+            case WHATSAPP -> new NotificacionWhatsApp(
+                    destinatario,
+                    mensaje,
+                    "WHATSAPP_API_KEY_123",
+                    "https://api.whatsapp.com"
+            ).enviar();
         }
     }
 }

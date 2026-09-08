@@ -2,7 +2,7 @@ package dev.nicofeno.acoplado;
 
 public class MainAcoplado {
     public static void main(String[] args) {
-        var servicio = new ServicioNotificacionesAcoplado();
+        var servicio = new ServicioNotificaciones();
 
         servicio.enviarNotificacion(
                 CanalNotificacion.EMAIL,

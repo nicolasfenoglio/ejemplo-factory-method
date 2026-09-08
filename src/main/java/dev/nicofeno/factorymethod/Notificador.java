@@ -3,6 +3,7 @@ package dev.nicofeno.factorymethod;
 import dev.nicofeno.shared.Notificacion;
 
 public abstract class Notificador {
+
     protected abstract Notificacion crearNotificacion(
             String destinatario,
             String mensaje

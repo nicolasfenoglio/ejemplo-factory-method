@@ -15,20 +15,17 @@ public class MainFactoryMethod {
         );
 
         procesarEnvio(
-                new NotificadorEmail(clienteSmtp),
+                NotificadorEmail.getInstance(clienteSmtp),
                 "ana@example.com",
                 "Tu pedido fue despachado"
         );
         procesarEnvio(
-                new NotificadorSms(clienteSms),
+                NotificadorSms.getInstance(clienteSms),
                 "+5491155555555",
                 "Tu pedido fue entregado"
         );
         procesarEnvio(
-                new NotificadorWhatsApp(
-                        "WHATSAPP_API_KEY_123",
-                        "https://api.whatsapp.com"
-                ),
+                NotificadorWhatsApp.getInstance("WHATSAPP_API_KEY", "https://api.whatsap.com"),
                 "+5491155555555",
                 "Tu pedido esta listo para retirar"
         );

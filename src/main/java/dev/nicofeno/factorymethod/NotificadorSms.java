@@ -7,13 +7,22 @@ import dev.nicofeno.shared.NotificacionSms;
 import java.util.Objects;
 
 public class NotificadorSms extends Notificador {
+
+    private static NotificadorSms SINGLETON;
+
     private final ClienteSmsGateway clienteSmsGateway;
 
-    public NotificadorSms(ClienteSmsGateway clienteSmsGateway) {
+    protected NotificadorSms(ClienteSmsGateway clienteSmsGateway) {
         this.clienteSmsGateway = Objects.requireNonNull(
                 clienteSmsGateway,
                 "El cliente SMS es obligatorio"
         );
+    }
+
+    public static Notificador getInstance(final ClienteSmsGateway clienteSmsGateway) {
+        if (SINGLETON != null) return SINGLETON;
+        SINGLETON = new NotificadorSms(clienteSmsGateway);
+        return SINGLETON;
     }
 
     @Override
